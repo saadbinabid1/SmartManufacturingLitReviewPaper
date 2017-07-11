@@ -1,0 +1,94 @@
+% This is LLNCS.DEM the demonstration file of
+% the LaTeX macro package from Springer-Verlag
+% for Lecture Notes in Computer Science,
+% version 2.4 for LaTeX2e as of 16. April 2010
+%
+\documentclass{llncs}
+%
+\usepackage{makeidx}  % allows for indexgeneration
+% 
+\usepackage{calc}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsmath}
+\usepackage{color, colortbl}
+
+\usepackage{xcolor} 
+
+\usepackage[final,pdftex]{graphicx}
+        \pdfcompresslevel=9
+        \DeclareGraphicsExtensions{.png} 
+
+\usepackage{chngcntr}
+\usepackage{epsfig} 
+\usepackage{url}
+
+\usepackage{ifthen} 
+\usepackage{amssymb}
+ 
+\usepackage{float} 
+
+\newboolean{showcomments}
+\setboolean{showcomments}{true} % toggle to show or hide comments
+\ifthenelse{\boolean{showcomments}}
+  {\newcommand{\nb}[2]{
+    \fcolorbox{gray}{yellow}{\bfseries\sffamily\scriptsize#1}
+    {$\blacktriangleright$#2$\blacktriangleleft$}
+   }
+   \newcommand{\version}{\emph{\scriptsize$-$working$-$}}
+  }
+  {\newcommand{\nb}[2]{}
+   \newcommand{\version}{}
+  }
+
+\usepackage[linewidth=1pt]{mdframed}
+\usepackage{lipsum}
+
+% for comments
+\newcommand\saad[1]{\nb{Saad}{\textcolor{green}{#1}}}
+
+
+\begin{document}
+%
+\frontmatter          % for the preliminaries
+
+\mainmatter              % start of the contributions
+%
+\title{A Survey of Ontology-based Data Integration Approaches to Support Smart Manufacturing}
+%
+\titlerunning{}  % abbreviated title (for running head)
+%                                     also used for the TOC unless
+%                                     \toctitle is used
+%
+\author{Saad Bin Abid}
+%
+\authorrunning{} % abbreviated author list (for running head)
+%
+%%%% list of authors for the TOC (use if author list has to be modified)
+\tocauthor{}
+%
+\institute{
+fortiss GmbH\\
+Guerickestra\ss e 25, 80805 M\"unchen\\
+\email{abid@fortiss.org}\\
+}
+\maketitle              % typeset the title of the contribution 
+\vspace{-.5cm}
+\begin{abstract}
+In today’s world, modern manufacturing vicinities are data enrich environments that are continuously producing a huge amount of data.
+This data needs to be analysed, transmitted and integrated in order to be useful to improve the manufacturing intelligence.
+Manufacturing industry is now taking advantages of the concepts like that of Internet of Things (IoTs) and Cyber Physical Systems (CPSs) to have a competitive edge by making efficient and effective manufacturing processes. 
+The introduction of intelligent physical devices on the factory floor to improve production are producing a massive amount of data that is in different source formats that is only understandable in a particular part of an operational environment. 
+Data integration (DI) techniques allow different stakeholders (e.g., managers, manufacturing and operational engineers) to access data produced by intelligent devices across the board and helps them to understand the semantic meaning of the data. 
+This understanding of the data also helps to make smart decisions that can improve the manufacturing and operational capabilities. 
+In this context, we have conducted a survey on the current state-of-the-art
+(SOTA) on ontology-based DI approaches and technologies available. We summarise the current literature, compare the identified approaches, provide strengths and weakness and discuss the industrial use-cases and benefits of the ontology-based DI approaches to foster smart manufacturing (SM).
+\end{abstract}
+\input{text/Introduction.tex}
+\input{text/Methodology.tex} 
+\input{text/OntologyOverview.tex} 
+\input{text/Survey.tex} 
+\input{text/DiscussionandConclusions.tex}
+\bibliographystyle{plain}
+\bibliography{./bibliography}
+\end{document}

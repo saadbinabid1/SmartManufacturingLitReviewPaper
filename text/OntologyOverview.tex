@@ -1,0 +1,67 @@
+\section{Ontology Overview}
+\label{sec:OntOverview}
+\vspace{-.3cm}
+Definition: According to Gruber [34] ontology can be defined as follows, 
+“Ontology is a formal, explicit specification of a shared conceptualization”.
+Ontology represents a schema that captures the domain concepts and relationships among the domain concepts. Ontology allows sharing common understanding of the structure of information among people or software agents. Ontology is a machine readable or formal in nature[29] Ontologies were initially developed by Artificial Intelligence (AI) community to enable knowledge sharing and reuse [29]. 
+A common use of ontologies is data standardization and conceptualisation via a formal machine readable ontology language [5]. 
+According to Noy [5], the following are the main steps to create ontologies,
+\begin{itemize}
+  \item defining terms in the domain and relations among them,
+  \item defining concepts in the domain (classes),
+  \item arranging the concepts in a hierarchy (subclass-superclass hierarchy),
+  \item defining which attributes and properties (slots) classes can have and
+  constraints on their values
+  \item defining individuals and filling in slot values (instances).
+\end{itemize}
+
+\subsection{Languages for Ontology}
+As mentioned earlier, Ontologies are machine readable artefacts. There are a number of languages available to develop Ontologies, those are as follows,
+Ontology Web Language (OWL)1 is a semantic markup language that represents complex knowledge about things, group of things and relationships among them. OWL is utilized for publishing and sharing ontologies on the web.
+Extensible Markup Language (XML) Schema2 is considered to be semantic markup language developed for Web data. XML language has a simple, very flexible text format derived from SGML (ISO 8879). The database-compatible data types supported by XML Schema provide a way to specify a hierarchical model3.
+Resource Description Framework (RDF)4 developed by W3C is a metadata data model developed for describing Web resources. RDF extends the linking structure of Web to use URI (i.e., Universal Resource Identifier) to name the relationships between the things as well as two ends of the link (i.e., referred to as a “triple”). A triple in RDF forms a statement that looks like (Resource, Property, Value). Combining triples forms a directed, labelled graph. The directed graph can be visualized to to understand the relationships among the domain concepts. RDF also allows data merging even if the underlying schemas are non-similar.
+RDF Schema5 is a language describing the vocabularies of RDF data in terms of primitives such as rdfs:Class, rdf:Property, rdfs:domain, and rdfs:range. In other words, RDF Schema is utilized to define the semantic relationships between properties and resources.
+ DAML+OIL (DARPA Agent Modelling Language)6 is also a semantic markup language for Web Resources that extends RDF and RDF Schema with richer modelling primitives. This ontology development language has XML-based syntax and layered architecture.
+ Other ontology development languages are Unified Modelling Language (UML7), Ontology Exchange Language (XOL8) and Simple HTML Ontology Extensions (SHOE9). Apart of languages there are tools to build, edit and visualise ontologies. A few ones are Protégé10, Ontosaurus11, OntoEdit12, WebODE13 and Apollo14. Open Services for Life Cycle Collaboration (OSLC15) is also a set of practical specifications (can be called Ontology language) built using XML alike schemas and RDF for data interoperability among software tools. Eclipse Modelling Framework (EMF16) also provides a UML like language called ECore17 language that also allows its user to perform ontology development process to build a domain-specific language (DSL).
+\subsection{Types of Ontologies for Data Integration}
+As explained earlier, ontologies are built with the purpose of capturing the
+domain knowledge and relationships among the domain concepts. In the context of DI, they are utilized as follows [35],
+\subsubsection{Single Ontology Approach}
+A single ontology is considered as a global reference schema/model to all the
+sources in the system. All of the source schemas are directly related to the global schema which is shared among all source schemas. 
+Also the global ontology provides a uniform interface to the user. 
+This approach requires all sources to have a common view of the domain concepts. 
+This is the simplest approach that can be simulated by other approaches. 
+A single ontology approach can utilized for data integration scenario where all
+the information or data sources to be integrated have almost a common view on
+the domain. 
+For instance, consider a scenario where there are three heterogeneous data
+sources (Building Management System, energy monitoring system (MandT) and SCADA)
+wants to represent temperature sensors data and have a common granularity level. 
+It would be easier to utilize single ontology approach in this situation. 
+It would be really difficult to perform integration and find a common minimal ontology when one of the data source has a different view of the domain or if the data to be integrated are not at the same level of granularity. Depending on the nature of the changes in one information source it can imply changes in the global ontology and in the mappings to the other information sources. The limitations of single ontology approach led to the development of multiple ontology approaches. Figure 2 graphically represents single ontology approach.
+\subsubsection{Multiple Ontology Approach}
+In multiple ontology approach, each of the data sources has its local schema
+defining it. For DI purpose there is a mapping between local ontologies (i.e.,
+point-to-point DI). Example scenario could be when three HVAC systems (i.e.,
+BMS, MandT and SCADA) require data integration and one wants to represent data
+sources (e.g., sensor temperature) according to the local domain. In such a scenario, each data source has its own local ontology (representing sensor temperature) and the integration is achieved via mappings between the local ontologies. Apparent advantages of multiple ontology approaches are 1) no need to manage a global ontology which puts limitations for each information source to have a common view of the whole domain, 2) modify the resources (i.e. add, remove and change) in local ontology without taking into other local ontologies and 3) resources can be represented at different levels of granularity. Although the multiple ontology approach tries to address single ontology limitations, however, there are challenges in applying multi ontology approach, for example, this kind of approach 1)requires additional mappings to be maintained per couple of local ontologies which is an overhead, 2) can be difficult to implement when same data has different semantic meaning and represented at different levels of granularity and 3) inter-ontology mappings are difficult to manage since they grow exponentially and 4) attempts to Integrate concepts that may resides at different level of granularity which becomes a really challenge when adding more data sources. Figure 3 represents a multi ontology approach.
+\subsubsection{Hybrid Ontology Approach}
+In order to mitigate the issues and limitations of Single and Multiple Ontology
+approaches, there is another approach called Hybrid Ontology Approach in Literature. In hybrid approach, every data source has its local ontology providing semantic definition of sources and there is a global ontology representing a global view of the domain. 
+The global ontology contains common concepts of the domain represents a common view of the sources of the domain. 
+The interesting part is that how to develop the local ontology. 
+Local ontology is made up of common concepts or vocabulary concepts and adding
+the local operators from the domain. 
+These operators are local concepts that provide semantics to the global concepts and make them domain specific. 
+A global ontology is utilized for comparing local ontologies with each other. 
+For instance, a scenario could again be when one wants to integrate three data
+sources (BMS, SCADA and MandT) to integrate temperate sensors. In this situation
+“temp” will be a global concept residing in the global ontology and building
+temperature there is “room1 underscore temp” concept, for field sensors there is
+“field1 underscore temp” and for manufacturing machine temperature there is
+“machine1 underscore temp”. in this situation domain operators/attributes (i.e.,
+room1, field1 and machine1) are attached to temp to make it more domain specific.  Advantages of this approach are 1) it is easier for new data sources to be added without the need of additional mappings, 2) it reduces the number of mappings to be developed and managed between local and global concepts and 3) it supports evolution of ontologies. One of the biggest drawbacks is that one cannot reuse the existing local ontology leading towards development of local ontology from scratch.
+Our focus in this paper is on all of the aforementioned ontology-based DI
+approaches. In SM there exist data sources (e.g., Sensors, databases) that are heterogeneous in nature and produce data in multiple formats. These data sources can be integrated with single, multiple or hybrid ontology approaches. Cruz and Xiao [29] identified five uses of Ontologies in the context of DI, that are 1) Metadata representation, 2) Global conceptualisation, 3) Support for high-level queries, 4) Declarative mediation and 5) Mapping support.
+
